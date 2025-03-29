@@ -10,6 +10,7 @@ namespace Arenar.PocketFantasyWar
         public string unitIconPath;
         public string unitPrefabPath;
         
+        public int unitCountInSquad;
         public int unitHealth;
         public float unitSpeed;
         public int unitDamage;
@@ -19,6 +20,7 @@ namespace Arenar.PocketFantasyWar
         public Sprite UnitIcon => string.IsNullOrEmpty(unitIconPath) ? null : Resources.Load<Sprite>(unitIconPath);
         public string UnitPrefabPath => unitPrefabPath;
         public GameObject UnitPrefab => Resources.Load<GameObject>(unitPrefabPath);
+        public int UnitCountInSquad => unitCountInSquad;
         public int UnitHealth => unitHealth;
         public float UnitSpeed => unitSpeed;
         public int UnitDamage => unitDamage;

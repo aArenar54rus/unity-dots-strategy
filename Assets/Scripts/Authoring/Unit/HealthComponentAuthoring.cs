@@ -1,5 +1,7 @@
 using Unity.Entities;
 using UnityEngine;
+using UnityEngine.Serialization;
+
 
 namespace Arenar.PocketFantasyWar
 {
@@ -7,21 +9,28 @@ namespace Arenar.PocketFantasyWar
 	{
 		public float health;
 		public float healthMax;
-	}
-	
-	public class Baker : Baker<HealthComponentAuthoring>
-	{
-		public override void Bake(HealthComponentAuthoring healthComponentAuthoring)
+		public UnitDataContainer unitDataContainer;
+
+
+		public float Health => unitDataContainer != null ? unitDataContainer.UnitData.UnitHealth : health;
+		public float HealthMax => unitDataContainer != null ? unitDataContainer.UnitData.UnitHealth : healthMax;
+
+		
+		public class Baker : Baker<HealthComponentAuthoring>
 		{
-			Entity entity = GetEntity(TransformUsageFlags.Dynamic);
-			AddComponent(entity, new HealthComponent()
+			public override void Bake(HealthComponentAuthoring healthComponentAuthoring)
 			{
-				health = healthComponentAuthoring.health,
-				healthMax = healthComponentAuthoring.healthMax,
-			});
+				Entity entity = GetEntity(TransformUsageFlags.Dynamic);
+				AddComponent(entity, new HealthComponent()
+				{
+					health = healthComponentAuthoring.Health,
+					healthMax = healthComponentAuthoring.HealthMax,
+				});
+			}
 		}
 	}
-
+	
+	
 	public struct HealthComponent : IComponentData
 	{
 		public float health;
