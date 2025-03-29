@@ -224,7 +224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5916357226189103630}
   m_Layer: 0
-  m_Name: SquadContainer
+  m_Name: SquadContainer_8x2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
